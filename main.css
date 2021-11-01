@@ -1,0 +1,41 @@
+body,
+ul {
+    margin: 0px;
+    padding: 0px;
+}
+
+ul li {
+    list-style-type: none;
+    position: relative;
+    padding: 12px 5% 12px 5%;
+    cursor: pointer;
+}
+
+span.close {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 12px 5% 12px 5%;
+}
+
+li:hover {
+    background: #eee;
+}
+
+span:hover {
+    background-color: silver;
+}
+
+#container {
+    margin: 12px 25% 12px 25%;
+    border: 1px solid red;
+}
+
+#myInput {
+    width: 100%;
+}
+
+#butDecide {
+    margin: 0 auto;
+    display: block;
+}

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Blockchain Decider</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+
+<body>
+    <h1 style="text-align: center;">Blockchain Decider</h1>
+
+    <div id="container">
+        <div style="display: flex;">
+            <input id="myInput" type="text" oninput="inputOnChange()" onkeypress="butOnKeyPress(event)">
+            <button id="butAddOption" onclick="addOption()" disabled>Add Option</button>
+        </div>
+    </div>
+
+    <div id="container">
+        <ul id="myUL">
+        </ul>
+    </div>
+
+    <button class="center" id="butDecide" style="visibility: hidden;" onclick="decide()">Decide</button>
+
+
+
+</body>
+
+</html>
