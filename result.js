@@ -83,22 +83,25 @@ async function getLastestEthBlock() {
 }
 
 async function getLastestEthBlockV2() {
-    const provider = new ethers.providers.Web3Provider(window.ethereum)
-    const lastBockNUmber = await provider.getBlockNumber();
+    try {
+        const provider = new ethers.providers.Web3Provider(window.ethereum)
+        const lastBockNUmber = await provider.getBlockNumber();
 
-    let proxBlockNumber;
-    let i = 0;
+        let proxBlockNumber;
+        let i = 0;
 
-    do {
-        document.getElementById("textResult").textContent = "Esperando por el próximo bloque " + (i % 2 == 0 ? "☺" : "☻");
-        "(งツ)ว"
-        "(วツ)ง"
-        proxBlockNumber = await provider.getBlockNumber();
-        await sleep(1000);
-        i++;
-    } while (proxBlockNumber == lastBockNUmber);
+        do {
+            document.getElementById("textResult").textContent = "Esperando por el próximo bloque " + (i % 2 == 0 ? ":|" : ":D");
 
-    const block = await provider.getBlock(proxBlockNumber);
+            proxBlockNumber = await provider.getBlockNumber();
+            await sleep(1000);
+            i++;
+        } while (proxBlockNumber == lastBockNUmber);
 
-    return block.hash;
+        const block = await provider.getBlock(proxBlockNumber);
+
+        return block.hash;
+    } catch (ex) {
+        document.getElementById("textResult").textContent = ex;
+    }
 }
