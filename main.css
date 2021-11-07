@@ -1,3 +1,16 @@
+* {
+    font-family: 'Solway', serif;
+}
+
+.textarea {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    resize: both;
+    min-height: 40px;
+    line-height: 20px;
+}
+
 body,
 ul {
     margin: 0px;
@@ -8,7 +21,11 @@ ul li {
     list-style-type: none;
     position: relative;
     padding: 12px 5% 12px 5%;
-    cursor: pointer;
+}
+
+li.listItem {
+    border: 1px solid black;
+    margin-top: 5px;
 }
 
 span.close {
@@ -18,24 +35,58 @@ span.close {
     padding: 12px 5% 12px 5%;
 }
 
-li:hover {
+span.close:hover {
+    cursor: pointer;
+}
+
+
+/*li:hover {
     background: #eee;
 }
 
 span:hover {
     background-color: silver;
-}
+}*/
 
 #container {
     margin: 12px 25% 12px 25%;
-    border: 1px solid red;
+    /* border: 1px solid red;*/
 }
 
 #myInput {
     width: 100%;
+    text-decoration: none !important;
+    border: 0;
+    text-align: center;
 }
 
 #butDecide {
     margin: 0 auto;
     display: block;
+}
+
+#titleInput {
+    width: 100%;
+    text-align: center;
+    font-size: x-large;
+    font-weight: bold;
+    text-decoration: none !important;
+    border: 0;
+}
+
+input:focus {
+    outline: none;
+}
+
+#titleInput::placeholder {
+    /* Firefox, Chrome, Opera */
+    text-align: center;
+}
+
+button {
+    list-style-type: none;
+    position: relative;
+    padding: 12px 5% 12px 5%;
+    font-size: medium;
+    font-weight: bold;
 }

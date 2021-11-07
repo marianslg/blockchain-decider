@@ -1,16 +1,9 @@
 const log = document.getElementById("submited");
 const myUL = document.getElementById("myUL");
 
-function inputOnChange() {
-    document.getElementById("butAddOption").disabled = document.getElementById("myInput").value.length == 0;
-}
-
 function butOnKeyPress(event) {
-    document.getElementById("butAddOption").disabled = document.getElementById("myInput").value.length == 0;
-
-    if (event.key === 'Enter')
-        document.getElementById("butAddOption").click();
-
+    if (event.key === 'Enter' && document.getElementById("myInput").value.length > 0)
+        addOption();
 }
 
 function addOption() {
@@ -19,15 +12,17 @@ function addOption() {
     li.innerHTML = document.getElementById("myInput").value
 
     var span = document.createElement("span");
-    span.textContent = 'x';
+    span.textContent = '✖';
     span.className = "close";
     span.addEventListener("click", delete_item, li);
+
+    li.className = 'listItem';
+
     li.appendChild(span);
 
     document.getElementById("myUL").appendChild(li);
 
     document.getElementById("myInput").value = "";
-    document.getElementById("butAddOption").disabled = true;
     document.getElementById('myInput').focus();
 
     ValiditeState();
@@ -62,7 +57,7 @@ function isDuplicated(input) {
 function ValiditeState() {
     const myUL = document.getElementById("myUL");
 
-    document.getElementById("butDecide").style.visibility = myUL.children.length > 0 ? "visible" : "hidden";
+    document.getElementById("butDecide").disabled = myUL.children.length == 0;
 }
 
 async function decide(options) {
@@ -71,10 +66,35 @@ async function decide(options) {
     window.location.href = "result.html";
 }
 
+function cont() {
+    var url = new URL("http:/www.google.com");
+
+    url.searchParams.append('ti', document.getElementById("titleInput").value);
+
+    var optionsArray = getOptions();
+
+    optionsArray.forEach(item =>
+        url.searchParams.append('op', item));
+
+    window.location.href = "items.html" + url.search;
+}
+
 
 async function getBlockChainData() {
     const response = await fetch('https://api.blockcypher.com/v1/eth/main');
     const myJson = await response.json(); //extract JSON from the http response
 
     return myJson;
+}
+
+
+function titleFocus() {
+    console.log("titleFocus")
+
+    document.getElementById("titleInput").setAttribute('placeholder', '');
+}
+
+function titleBlur() {
+    console.log("titleBlur")
+    document.getElementById("titleInput").setAttribute('placeholder', 'title');
 }

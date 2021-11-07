@@ -1,37 +1,59 @@
 var options_results = [];
 
+
+
 async function decide() {
-    var obj = JSON.parse(sessionStorage.options);
+    const url = new URL(location.href);
+    const title = url.searchParams.get("ti");
+    const options = url.searchParams.getAll("op");
+
+    document.getElementById("titleInput").textContent = title;
+
+    /* options.forEach(item => {
+         var li = document.createElement("li");
+
+         li.innerHTML = item;
+         //li.className = 'listItem';
+
+         document.getElementById("myUL").appendChild(li);
+     });*/
+
+    document.getElementById("textResult").textContent = "Esperando por el próximo bloque...";
 
 
     myJson = await getBlockChainData();
-    var start = new Date(myJson.time);
-    var dif = 0;
+    var startHash = myJson.hash;
     var myJson;
 
+    console.log(myJson.hash);
+    console.log(myJson.time);
+
+
     do {
-
         myJson = await getBlockChainData();
-        dif = start - new Date(myJson.time);
         await sleep(1000);
-        console.log(dif);
+    } while (myJson.hash == startHash);
 
-    } while (dif >= 0);
+    console.log(myJson.hash);
+    console.log(myJson.time);
 
     let eth_hash = myJson.hash;
     let eth_hash_value = parseInt(eth_hash, 16);
 
-    for (var i = 0; i < obj.length; i++) {
+    for (var i = 0; i < options.length; i++) {
         let option = {
-            "option": obj[i],
-            "hash_value": parseInt(sha3_256(obj[i] + eth_hash), 16),
+            "option": options[i],
+            "hash_value": parseInt(sha3_256(options[i] + eth_hash), 16),
             "dif": 0
         };
 
         option.dif = Math.abs(eth_hash_value - option.hash_value);
 
-        options_results.push(option)
+        options_results.push(option);
     }
+
+    document.getElementById("textResult").textContent = "Result:";
+
 
     print_results(options_results);
 }
@@ -45,9 +67,9 @@ function print_results(options_results) {
 
         var li = document.createElement("li");
 
-        li.innerHTML = options_results[i].option + ' ' + options_results[i].dif;
+        li.innerHTML = options_results[i].option;
 
-        document.getElementById("result").appendChild(li);
+        document.getElementById("myUL").appendChild(li);
     }
 }
 
