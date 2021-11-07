@@ -1,7 +1,5 @@
 var options_results = [];
 
-
-
 async function decide() {
     const url = new URL(location.href);
     const title = url.searchParams.get("ti");
@@ -84,8 +82,10 @@ async function getLastestEthBlock() {
 
 async function getLastestEthBlockV2() {
     try {
+        document.getElementById("textResult").textContent = "0";
         const provider = new ethers.providers.Web3Provider(window.ethereum)
         const lastBockNUmber = await provider.getBlockNumber();
+        document.getElementById("textResult").textContent = "1";
 
         let proxBlockNumber;
         let i = 0;
