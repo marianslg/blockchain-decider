@@ -82,9 +82,9 @@ async function getLastestEthBlock() {
 
 async function getLastestEthBlockV2() {
     try {
+        const provider = new ethers.providers.EtherscanProvider()
+            //const provider = new ethers.providers.Web3Provider(window.ethereum) //metamask
 
-        document.getElementById("textResult").textContent = JSON.stringify(ethers);
-        const provider = new ethers.providers.Web3Provider(window.ethereum)
         const lastBockNUmber = await provider.getBlockNumber();
 
         let proxBlockNumber;
@@ -102,7 +102,6 @@ async function getLastestEthBlockV2() {
 
         return block.hash;
     } catch (ex) {
-
-        // document.getElementById("textResult").textContent = ex;
+        document.getElementById("textResult").textContent = ex;
     }
 }
