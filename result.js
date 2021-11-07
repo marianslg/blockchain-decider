@@ -7,9 +7,7 @@ async function decide() {
 
     document.getElementById("titleInput").textContent = title;
 
-    const myJson = await getLastestEthBlockV2();
-
-    let eth_hash = myJson.hash;
+    let eth_hash = await getLastestEthBlockV2();
     let eth_hash_value = parseInt(eth_hash, 16);
 
     for (var i = 0; i < options.length; i++) {

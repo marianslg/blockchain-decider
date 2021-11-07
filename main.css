@@ -30,8 +30,11 @@ li.listItem {
 
 li.result:first-child {
     font-weight: bold;
-    color: blue;
     font-size: x-large;
+}
+
+li.result::marker {
+    font-size: medium;
 }
 
 span.close {
@@ -59,7 +62,7 @@ span:hover {
     /* border: 1px solid red;*/
 }
 
-#myInput {
+#optionInput {
     width: 100%;
     text-decoration: none !important;
     border: 0;
@@ -78,6 +81,7 @@ span:hover {
     font-weight: bold;
     text-decoration: none !important;
     border: 0;
+    font-style: italic;
 }
 
 input:focus {

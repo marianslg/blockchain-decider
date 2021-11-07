@@ -13,7 +13,7 @@
     <script src='main.js'></script>
 </head>
 
-<body onload="jaja()">
+<body>
 
     <h1 style="text-align: center;">BLOCKCHAIN DECIDER</h1>
     <br>
@@ -27,13 +27,13 @@
 
     <div id="container">
         <div style="display: flex;">
-            <input id="titleInput" type="text" placeholder="title" oninput="inputOnChange()" onkeypress="butOnKeyPress(event)" onfocus="titleFocus()" onblur="titleBlur()">
+            <input id="titleInput" type="text" placeholder="title" onkeypress="titleInputKeyPressed(event)" onfocus="titleFocus()" onblur="titleBlur()">
         </div>
     </div>
 
     <div id="container">
         <div style="display: flex;">
-            <input id="myInput" type="text" placeholder="add option" onkeypress="butOnKeyPress(event)">
+            <input id="optionInput" type="text" placeholder="add option" onkeypress="optionInputKeyPressed(event)" onfocus="optionFocus()" onblur="optionBlur()">
         </div>
     </div>
 
@@ -42,7 +42,7 @@
         </ul>
     </div>
     <br>
-    <button class="center" id="butDecide" disabled onclick="cont()">Continue</button>
+    <button class="center" id="butDecide" disabled onclick="next()">Continue</button>
 </body>
 
 </html>

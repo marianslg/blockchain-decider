@@ -1,15 +1,28 @@
 const log = document.getElementById("submited");
 const myUL = document.getElementById("myUL");
 
-function butOnKeyPress(event) {
-    if (event.key === 'Enter' && document.getElementById("myInput").value.length > 0)
+function optionInputKeyPressed(event) {
+    if (event.key === 'Enter' && document.getElementById("optionInput").value.length > 0)
         addOption();
+}
+
+function titleInputKeyPressed(event) {
+    if (event.key === 'Enter')
+        document.getElementById('optionInput').focus();
+}
+
+function optionFocus() {
+    document.getElementById("optionInput").setAttribute('placeholder', '');
+}
+
+function optionBlur() {
+    document.getElementById("optionInput").setAttribute('placeholder', 'add option');
 }
 
 function addOption() {
     var li = document.createElement("li");
 
-    li.innerHTML = document.getElementById("myInput").value
+    li.innerHTML = document.getElementById("optionInput").value
 
     var span = document.createElement("span");
     span.textContent = '✖';
@@ -22,8 +35,8 @@ function addOption() {
 
     document.getElementById("myUL").appendChild(li);
 
-    document.getElementById("myInput").value = "";
-    document.getElementById('myInput').focus();
+    document.getElementById("optionInput").value = "";
+    document.getElementById('optionInput').focus();
 
     ValiditeState();
 }
@@ -66,7 +79,7 @@ async function decide(options) {
     window.location.href = "result.html";
 }
 
-function cont() {
+function next() {
     var url = new URL("http:/www.google.com");
 
     url.searchParams.append('ti', document.getElementById("titleInput").value);
@@ -89,12 +102,9 @@ async function getBlockChainData() {
 
 
 function titleFocus() {
-    console.log("titleFocus")
-
     document.getElementById("titleInput").setAttribute('placeholder', '');
 }
 
 function titleBlur() {
-    console.log("titleBlur")
     document.getElementById("titleInput").setAttribute('placeholder', 'title');
 }
