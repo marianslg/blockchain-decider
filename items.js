@@ -1,5 +1,3 @@
-console.log(location);
-
 const url = new URL(location.href);
 const title = url.searchParams.get("ti");
 const options = url.searchParams.getAll("op");
