@@ -28,6 +28,11 @@ li.listItem {
     margin-top: 5px;
 }
 
+li.result:first-child {
+    font-weight: bold;
+    color: blue;
+}
+
 span.close {
     position: absolute;
     right: 0;
