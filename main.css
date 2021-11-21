@@ -20,12 +20,15 @@ ul {
 ul li {
     list-style-type: none;
     position: relative;
-    padding: 12px 5% 12px 5%;
+    padding: 12px 20px 12px 12px;
 }
 
 li.listItem {
     border: 1px solid black;
     margin-top: 5px;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
 }
 
 li.result:first-child {
@@ -41,7 +44,7 @@ span.close {
     position: absolute;
     right: 0;
     top: 0;
-    padding: 12px 5% 12px 5%;
+    padding: 5px;
 }
 
 span.close:hover {
@@ -59,7 +62,8 @@ span:hover {
 
 #container {
     margin: 12px 25% 12px 25%;
-    /* border: 1px solid red;*/
+    max-height: 455px;
+    overflow: auto;
 }
 
 #optionInput {
@@ -70,7 +74,7 @@ span:hover {
 }
 
 #butDecide {
-    margin: 0 auto;
+    margin: 15px auto;
     display: block;
 }
 
@@ -99,4 +103,21 @@ button {
     padding: 12px 5% 12px 5%;
     font-size: medium;
     font-weight: bold;
+}
+
+@media (max-width: 800px) {
+    #container {
+        margin: 12px;
+    }
+}
+
+div.menu-items {
+    text-align: center;
+}
+
+a:link,
+a:visited {
+    color: black;
+    text-decoration: none;
+    text-decoration: underline gray;
 }

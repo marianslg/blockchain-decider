@@ -31,9 +31,6 @@ async function decide() {
 function print_results(options_results) {
     var audio = document.getElementById('audio');
     var source = document.getElementById('audioSource');
-    source.src = "celebration.ogg";
-    audio.load(); //call this to just preload the audio without playing
-    audio.play(); //call this to play the song right away
 
     options_results.sort((a, b) => {
         return a.dif - b.dif;
