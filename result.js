@@ -29,9 +29,6 @@ async function decide() {
 }
 
 function print_results(options_results) {
-    var audio = document.getElementById('audio');
-    var source = document.getElementById('audioSource');
-
     options_results.sort((a, b) => {
         return a.dif - b.dif;
     });
@@ -80,9 +77,9 @@ async function getLastestEthBlockV2() {
         const provider = new ethers.providers.EtherscanProvider()
             //const provider = new ethers.providers.Web3Provider(window.ethereum) //metamask
 
-        const lastBockNUmber = await provider.getBlockNumber();
-
+        let lastBockNUmber;
         let proxBlockNumber;
+
         let i = 0;
 
         do {
